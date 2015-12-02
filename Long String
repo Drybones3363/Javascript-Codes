@@ -1,0 +1,15 @@
+var str = document.getElementById("hello").innerHTML;
+var n = 0;
+
+var word = "";
+
+for (var i=0,i < str.length;i++) {
+var c = str.charCodeAt(i);
+if (c == 10) {
+console.log(word);
+word = "";
+}
+else {
+word = word.concat(str.substring(i,i+1));
+}
+}
