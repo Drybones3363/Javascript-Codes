@@ -10,16 +10,73 @@ var check = [[2,5,6],
 [1,2,5,9,10],
 [1,2,3,5,7,9,10,11],
 [2,3,4,6,8,10,11,12],
-[3,4,7,11,12]
+[3,4,7,11,12],
+[5,6,10,13,14],
+[5,6,7,9,11,13,14,15],
+[6,7,8,10,12,14,15,16],
+[7,8,11,15,16],
+[9,10,14],
+[9,10,11,13,15],
+[10,11,12,14,16],
+[11,12,15]
 ];
 
-for (var i=0,i < str.length;i++) {
+var chars = ['e','e','c','a','a','l','e','p','h','n','b','o','q','t','t','y']
+var nums = []
+for (var i=0;i < chars.length;i++) {
+nums[i] = chars[i].charCodeAt(0);
+}
+
+var index;
+
+function in_tbl(number) {
+for (var i=0;i < nums.length;i++) {
+if (number == nums[i]) {return i;}
+}
+return -1;
+}
+
+function in_check(q) {
+for (var i=0;i < check[index].length;i++) {
+if (q == check[index][i]) {return i;}
+}
+return -1;
+}
+
+function check_letter(l) {
+var ind = in_tbl(l);
+if (ind >= 0) {
+if (in_check(ind) >= 0) {
+index = ind;
+return "OMG YESS THE LETTER MATCHES SOMETHIGN!@!!!!"
+}
+else
+{return "wrong";}
+}
+else
+{return "wrong";}
+}
+
+function check_word(word) {
+for (var e=0;e<word.length;e++) {
+var letter = ((word.substring(i,i+1)).toLowerCase()).charCodeAt(0);
+if (check_letter(letter) == "wrong") {return "wrong";}
+}
+return "YESSS";
+}
+
+for (var i=0;i < str.length;i++) {
 var c = str.charCodeAt(i);
 if (c == 10) {
+index = -1;
+if (check_word(word) == "YESSS") {
 console.log(word);
+n = n + 1; }
 word = "";
 }
 else {
 word = word.concat(str.substring(i,i+1));
 }
 }
+console.log("THE ANSWER IS:");
+console.log(n);
